@@ -29,7 +29,7 @@ namespace GestorTareas.ViewModels
         TimeSpan horaLimite = DateTime.Now.TimeOfDay;
 
         [ObservableProperty]
-        int prioridad = 2; // 1: Alta, 2: Media, 3: Baja
+        int? prioridad; // Sin selección inicial; 1: Alta, 2: Media, 3: Baja
 
         public TareaViewModel()
         {
@@ -52,7 +52,7 @@ namespace GestorTareas.ViewModels
         [RelayCommand]
         public async Task GuardarTareaAsync()
         {
-            if (string.IsNullOrWhiteSpace(Nombre)) return; 
+            if (string.IsNullOrWhiteSpace(Nombre) || Prioridad is not int prioridadSeleccionada || prioridadSeleccionada < 1 || prioridadSeleccionada > 3) return;
 
             // Unimos la fecha del DatePicker y la hora del TimePicker
             DateTime fechaHoraCompleta = FechaLimite.Date + HoraLimite;
@@ -62,7 +62,7 @@ namespace GestorTareas.ViewModels
                 Nombre = this.Nombre,
                 Descripcion = this.Descripcion,
                 FechaLimite = fechaHoraCompleta, // Guardamos fecha y hora juntas
-                Prioridad = this.Prioridad
+                Prioridad = prioridadSeleccionada
             };
 
             await _database.GuardarTareaAsync(nuevaTarea);
@@ -72,7 +72,7 @@ namespace GestorTareas.ViewModels
             Descripcion = string.Empty;
             FechaLimite = DateTime.Today.AddDays(1);
             HoraLimite = DateTime.Now.TimeOfDay;
-            Prioridad = 2;
+            Prioridad = null;
 
             await CargarTareasAsync(); 
         }

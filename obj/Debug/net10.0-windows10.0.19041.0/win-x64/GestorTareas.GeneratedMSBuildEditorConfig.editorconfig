@@ -22,7 +22,7 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EntryPointFilePath = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GestorTareas
-build_property.ProjectDir = C:\Clase de Programacion 2\Proyecto de Clase\GestorTareas\
+build_property.ProjectDir = C:\Users\javier\Documents\GitHub\GestorTareas\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTAotExportsEnabled = 
@@ -34,7 +34,7 @@ build_property.CsWinRTUseWindowsUIXamlProjections = false
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Clase de Programacion 2/Proyecto de Clase/GestorTareas/App.xaml]
+[C:/Users/javier/Documents/GitHub/GestorTareas/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GestorTareas.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
@@ -44,7 +44,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Clase de Programacion 2/Proyecto de Clase/GestorTareas/AppShell.xaml]
+[C:/Users/javier/Documents/GitHub/GestorTareas/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GestorTareas.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
@@ -54,7 +54,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Clase de Programacion 2/Proyecto de Clase/GestorTareas/MainPage.xaml]
+[C:/Users/javier/Documents/GitHub/GestorTareas/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GestorTareas.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
@@ -64,7 +64,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Clase de Programacion 2/Proyecto de Clase/GestorTareas/Resources/Styles/Colors.xaml]
+[C:/Users/javier/Documents/GitHub/GestorTareas/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GestorTareas.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
@@ -74,7 +74,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Clase de Programacion 2/Proyecto de Clase/GestorTareas/Resources/Styles/Styles.xaml]
+[C:/Users/javier/Documents/GitHub/GestorTareas/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GestorTareas.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
