@@ -23,16 +23,28 @@
                 <VerticalStackLayout Spacing="12">
                     
                     <Label Text="Nombre de la tarea" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Entry Placeholder="Ingrese el nombre de la tarea" 
-                           Text="{Binding Nombre}" 
-                           TextColor="#1F2937" 
-                           BackgroundColor="#F9FAFB" />
+                    <Border Stroke="#D1D5DB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 6"
+                            BackgroundColor="#F9FAFB"
+                            Padding="10,2">
+                        <Entry Placeholder="Ingrese el nombre de la tarea"
+                               Text="{Binding Nombre}"
+                               TextColor="#1F2937"
+                               BackgroundColor="Transparent" />
+                    </Border>
                     
                     <Label Text="Descripción" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Entry Placeholder="Ingrese la descripción de la tarea" 
-                           Text="{Binding Descripcion}" 
-                           TextColor="#1F2937" 
-                           BackgroundColor="#F9FAFB" />
+                    <Border Stroke="#D1D5DB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 6"
+                            BackgroundColor="#F9FAFB"
+                            Padding="10,2">
+                        <Entry Placeholder="Ingrese la descripción de la tarea"
+                               Text="{Binding Descripcion}"
+                               TextColor="#1F2937"
+                               BackgroundColor="Transparent" />
+                    </Border>
                     
                     <Label Text="Fecha Límite" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
                     <DatePicker Date="{Binding FechaLimite}" TextColor="#1F2937" />
@@ -42,36 +54,56 @@
                     <TimePicker Time="{Binding HoraLimite}" Format="hh:mm tt" TextColor="#1F2937" />
                     
                     <Label Text="Nivel de Prioridad" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Grid>
-                        <Picker x:Name="PrioridadPicker"
-                                SelectedItem="{Binding Prioridad}"
-                                SemanticProperties.Description="Seleccione una prioridad"
-                                TextColor="#1F2937"
-                                BackgroundColor="#F9FAFB">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:Int32}">
-                                    <x:Int32>1</x:Int32>
-                                    <x:Int32>2</x:Int32>
-                                    <x:Int32>3</x:Int32>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                        <Label Text="Seleccione una prioridad"
-                               TextColor="#6B7280"
-                               FontSize="14"
-                               Margin="12,0,36,0"
-                               VerticalOptions="Center"
-                               InputTransparent="True"
-                               IsVisible="False">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label"
-                                             Binding="{Binding Source={x:Reference PrioridadPicker}, Path=SelectedIndex}"
-                                             Value="-1">
-                                    <Setter Property="IsVisible" Value="True" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                    </Grid>
+                    <Button Text="Seleccione una prioridad ▾"
+                            Clicked="OnPrioridadAbrirClicked"
+                            HorizontalOptions="Fill"
+                            MinimumHeightRequest="48"
+                            BackgroundColor="#F9FAFB"
+                            TextColor="#6B7280"
+                            BorderColor="#D1D5DB"
+                            BorderWidth="1"
+                            CornerRadius="6"
+                            SemanticProperties.Description="Abrir opciones de prioridad">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding Prioridad}" Value="1">
+                                <Setter Property="Text" Value="1 - Alta ▾" />
+                                <Setter Property="TextColor" Value="#1F2937" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button" Binding="{Binding Prioridad}" Value="2">
+                                <Setter Property="Text" Value="2 - Media ▾" />
+                                <Setter Property="TextColor" Value="#1F2937" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button" Binding="{Binding Prioridad}" Value="3">
+                                <Setter Property="Text" Value="3 - Baja ▾" />
+                                <Setter Property="TextColor" Value="#1F2937" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Border x:Name="PrioridadOpciones"
+                            IsVisible="False"
+                            Stroke="#D1D5DB"
+                            BackgroundColor="White"
+                            Padding="4">
+                        <VerticalStackLayout Spacing="4">
+                            <Button Text="Seleccione una prioridad"
+                                    IsEnabled="False"
+                                    MinimumHeightRequest="48"
+                                    BackgroundColor="#F3F4F6"
+                                    TextColor="#6B7280" />
+                            <Button Text="1 - Alta" CommandParameter="1"
+                                    Clicked="OnPrioridadSeleccionadaClicked"
+                                    MinimumHeightRequest="48"
+                                    BackgroundColor="#F9FAFB" TextColor="#1F2937" />
+                            <Button Text="2 - Media" CommandParameter="2"
+                                    Clicked="OnPrioridadSeleccionadaClicked"
+                                    MinimumHeightRequest="48"
+                                    BackgroundColor="#F9FAFB" TextColor="#1F2937" />
+                            <Button Text="3 - Baja" CommandParameter="3"
+                                    Clicked="OnPrioridadSeleccionadaClicked"
+                                    MinimumHeightRequest="48"
+                                    BackgroundColor="#F9FAFB" TextColor="#1F2937" />
+                        </VerticalStackLayout>
+                    </Border>
 
                     <Button Text="💾 Guardar Tarea" 
                             Command="{Binding GuardarTareaCommand}" 
@@ -167,7 +199,13 @@
                                             FontSize="12"
                                             CornerRadius="6"
                                             HeightRequest="36"
-                                            Padding="12,0"/>
+                                            Padding="12,0">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding Estado}" Value="Completada">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </Button.Triggers>
+                                    </Button>
                                             
                                     <Button Text="🗑️ Eliminar" 
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:TareaViewModel}}, Path=EliminarTareaCommand}" 
