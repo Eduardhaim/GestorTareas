@@ -23,13 +23,13 @@
                 <VerticalStackLayout Spacing="12">
                     
                     <Label Text="Nombre de la tarea" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Entry Placeholder="Ej. Presentar Proyecto 3" 
+                    <Entry Placeholder="Ingrese el nombre de la tarea" 
                            Text="{Binding Nombre}" 
                            TextColor="#1F2937" 
                            BackgroundColor="#F9FAFB" />
                     
                     <Label Text="Descripción" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Entry Placeholder="Ej. Subir código a GitHub" 
+                    <Entry Placeholder="Ingrese la descripción de la tarea" 
                            Text="{Binding Descripcion}" 
                            TextColor="#1F2937" 
                            BackgroundColor="#F9FAFB" />
@@ -39,21 +39,39 @@
 
                     <!-- Selector de Hora Límite -->
                     <Label Text="Hora Límite" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <TimePicker Time="{Binding HoraLimite}" TextColor="#1F2937" />
+                    <TimePicker Time="{Binding HoraLimite}" Format="hh:mm tt" TextColor="#1F2937" />
                     
                     <Label Text="Nivel de Prioridad" FontSize="14" FontAttributes="Bold" TextColor="#4B5563"/>
-                    <Picker SelectedItem="{Binding Prioridad}" 
-                            Title="Seleccione una prioridad"
-                            TextColor="#1F2937"
-                            BackgroundColor="#F9FAFB">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:Int32}">
-                                <x:Int32>1</x:Int32>
-                                <x:Int32>2</x:Int32>
-                                <x:Int32>3</x:Int32>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
+                    <Grid>
+                        <Picker x:Name="PrioridadPicker"
+                                SelectedItem="{Binding Prioridad}"
+                                SemanticProperties.Description="Seleccione una prioridad"
+                                TextColor="#1F2937"
+                                BackgroundColor="#F9FAFB">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:Int32}">
+                                    <x:Int32>1</x:Int32>
+                                    <x:Int32>2</x:Int32>
+                                    <x:Int32>3</x:Int32>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <Label Text="Seleccione una prioridad"
+                               TextColor="#6B7280"
+                               FontSize="14"
+                               Margin="12,0,36,0"
+                               VerticalOptions="Center"
+                               InputTransparent="True"
+                               IsVisible="False">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding Source={x:Reference PrioridadPicker}, Path=SelectedIndex}"
+                                             Value="-1">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </Grid>
 
                     <Button Text="💾 Guardar Tarea" 
                             Command="{Binding GuardarTareaCommand}" 
